@@ -1,0 +1,3 @@
+$ git log  					# list the commit history
+$ git log --pretty=online	# list the commit history with single format
+$ 

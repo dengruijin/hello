@@ -1,0 +1,7 @@
+$ mkdir hello
+$ cd hello
+$ git init
+Initialized empty Git repository in /Users/rj/hello/.git/
+$ vim readme.txt
+$ git add readme.txt
+$ git commit -m "add readme.txt"
