@@ -1,0 +1,26 @@
+if you delete a file in work-directory:
+rm -rf  test.txt
+
+$ git status 	
+	On branch master
+	Your branch is ahead of 'origin/master' by 5 commits.
+	  (use "git push" to publish your local commits)
+
+	Changes not staged for commit:
+	  (use "git add/rm <file>..." to update what will be committed)
+	  (use "git checkout -- <file>..." to discard changes in working directory)
+
+			deleted:    test.txt
+
+	no changes added to commit (use "git add" and/or "git commit -a")
+
+if you really want to delete test.txt from repository,do as follow:
+$ git rm test.txt
+	rm 'test.txt'
+	$ git commit -m "remove test.txt"
+	[master d17efd8] remove test.txt
+	 1 file changed, 1 deletion(-)
+	 delete mode 100644 test.txt
+	 
+if you do not want to delete it ,do as follow:
+$ git checkout -- test.txt 

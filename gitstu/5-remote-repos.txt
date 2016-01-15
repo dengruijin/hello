@@ -1,0 +1,11 @@
+1.you have a empty repository on github, and have a git repository(with many files) on localhost
+	if you want to assosiate the two repo ,do as follow on local repository:
+	$ git remote add origin git@github.com:michaelliao/learngit.git
+	$ git push -u origin master  # -u option make master to track origin/master
+	when next time you push code, you need not the "-u" option
+	$ git push origin master
+	
+	
+2.you has a non empty on github, you can just clone it to localhost
+	$ git clone git@github.com:michaelliao/gitskills.git
+
