@@ -1,0 +1,76 @@
+
+############## how to use #########################
+$ git checkout -b dev		# create a new branch "dev" and switch to the branch.
+$ git branch test			# create a new branch
+$ git checkout test 		# switch to branch "test"
+
+if we want to devlop a new feature in our project,
+we can create a new branch "feature1",
+	$ git checkout -b feature1
+then we coding on the "feature1" branch
+	$ git add <FILES>
+	$ git commit -m "code for feature1"
+when we finish the feature, then switch to "master", and merge the "feature1" branch.
+	$ git checkout master 
+	$ git merge feature1
+	$ git branch -d feature1	# delete the "feature1" branch
+	
+################ conflict #########################
+Oneday,you updated a file,and commit it on "feature1" branch.
+then someone update the same line as you, and commit it on "master" branch,
+Now, if you checkout to master and run:
+		$ git checkout master
+		$ git merge feature1
+the conflict will happen
+
+How to resolve the conflict?
+		Edit the conflicted files and commit to master again. now you can delete "feature1" branch.
+
+################ Fast-forward########################
+Generally,git use Fast-forward to merge branch.(if possible)
+Use Fast-forward mode,the branch info will be lost after delete.
+
+If you want to keep the branch after merge and delete,you'd beeter use "--no-ff" to disable Fast-forward.
+	$ git merge --no-ff -m "merge rj with no-ff" rj
+then,Even though you delete the branch "rj",you can see it use:
+	$ git log --graph --pretty=oneline --abbrev-commit
+
+################# bug branch ## stash ################
+now you are coding on "dev" branch, and have  uncommitted changes,
+at this moment,you need to create a branch to correct a bug,
+then you can use "git stash" on "dev" branch to save the work directory.
+	$ git stash		#save the work directory,then the work directoryis clean
+after the bug is corrected,you need to recovery you work on "dev" branch:
+	$ git stash pop	# or git stash apply && git stash drop
+	
+if you have many stash,use "git stash list" to print the list 
+	$ git stash list				# list all stash 
+	$ git stash apply stash@{0}		# recovery the specified stash
+	
+########### delete branch before merge ################
+if you are coding on "feature1" branch
+one day,you want to delete the branch(haven't do any merge)
+if you use:
+	$ git branch -d feature1
+you will get an error,you should use:
+	$ git branch -D feature1
+	
+################# branch on remote repository#######################
+$ git push origin master	# push local branch "master" to remote repo:origin
+$ git push origin dev		# push local branch "dev" to remote repo:origin
+
+when you clone a remote repository, git create only "master" branch on local repository
+if you want to see other branch, do as below:
+
+	$ git checkout -b dev origin/dev	#create local "dev" branch to track remote "dev" branch
+or :
+	$ git checkout -t origin/dev		#create local "dev" branch to track remote "dev" branch
+
+how to set tracking infomation for local branch to track remote branch:
+	$ git branch --set-upstream dev origin/dev	
+or:
+	$ git branch --set-upstream-to origin/dev dev
+
+
+
+

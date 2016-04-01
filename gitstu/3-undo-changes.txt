@@ -1,0 +1,6 @@
+$ git checkout -- readme.txt	# cancel your changes in readme.txt (in work-directory)
+$ git reset --hard HEAD^		# unstage files(or back to previous commit,see 2-roll-back.txt)
+
+if you staged a file, but you want to un do it, use "git reset --hard HEAD^"
+if your file is not staged,use "git checkout -- readme.txt"
+
