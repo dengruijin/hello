@@ -1,0 +1,5 @@
+$ git log  					# list the commit history
+$ git log --pretty=oneline	# list the commit history with single format
+$ git reset --hard HEAD^	# come back to previous commit (or unstage your file,see 3-undo-changes.txt)
+$ git reset --hard <COMMIT_ID>	# come forward to next commit
+$ git reflog				# query the action history ,you can find commit id by thie command

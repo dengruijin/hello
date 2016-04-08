@@ -1,0 +1,30 @@
+1.you have an empty repository on github, and have a git repository(with many files) on localhost
+	if you want to assosiate the two repo ,do as follow on local repository:
+	$ git remote add origin git@github.com:michaelliao/learngit.git
+	$ git push -u origin master  # -u option make master to track origin/master
+	when next time you push code, you need not the "-u" option
+	$ git push origin master
+	
+	
+2.you has a non empty on github, you can just clone it to localhost
+	$ git clone git@github.com:michaelliao/gitskills.git
+	
+$ git remote -v				#list the info of remote repositories
+
+################# branch on remote repository#######################
+$ git push origin master	# push local branch "master" to remote repo:origin
+$ git push origin dev		# push local branch "dev" to remote repo:origin
+
+when you clone a remote repository, git create only "master" branch on local repository
+if you want to see other branch, do as below:
+
+	$ git checkout -b dev origin/dev	#create local "dev" branch to track remote "dev" branch
+or :
+	$ git checkout -t origin/dev		#create local "dev" branch to track remote "dev" branch
+
+how to set tracking infomation for local branch to track remote branch:
+	$ git branch --set-upstream dev origin/dev	
+or:
+	$ git branch --set-upstream-to origin/dev dev
+	
+
