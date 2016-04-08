@@ -37,6 +37,7 @@ rpmbuild依据SPEC文件来从源码构建rpm包，spec文件主要包含以下�
 %clean
 打包完成后进入
 执行你的指令
+## spec实例
 
     Summary: GNU indent
     Name: indent
@@ -65,3 +66,37 @@ rpmbuild依据SPEC文件来从源码构建rpm包，spec文件主要包含以下�
     %doc /usr/local/info/indent.info
     %doc %attr(0444,root,root) /usr/local/man/man1/indent.1
     %doc COPYING AUTHORS README NEWS
+
+xsconfig.spec:
+
+    Summary:        XSConfig
+    Name:           xsconfig
+    Version:        1.0
+    Release:        2
+    License:        GPL
+    Group:          System Environment/Base
+    Source0:        %{name}-%{version}.tar.bz2
+    BuildRoot:      %{_tmppath}/%{name}-%{version}
+    %description
+    XSConfig contains some config files and scripts to support the XS installation.
+
+    %prep
+    %setup -q
+    echo "hello"
+    %build
+
+
+    %install
+    rm -rf ${RPM_BUILD_ROOT}
+    mkdir -p ${RPM_BUILD_ROOT}
+    #tar xf ${RPM_SOURCE_DIR}/%{name}-%{version}.tar.bz2 -C %{_builddir}
+    cp -vra %{_builddir}/%{name}-%{version}/* ${RPM_BUILD_ROOT}
+    rm -rf ${RPM_BUILD_ROOT}/ChangeLog
+
+
+    %clean
+    rm -rf $RPM_BUILD_ROOT
+
+    %files
+    %defattr(-,root,root)
+    /
