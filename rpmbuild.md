@@ -2,12 +2,25 @@
 rpmbuild依据SPEC文件来从源码构建rpm包，spec文件主要包含以下信息：
 
 ## spec文件内容
-BuildRoot:      %{_tmppath}/%{name}-%{version}
-RPM_BUILD_ROOT   BuildRoot
-_builddir		/usr/src/redhat/BUILD
+    Summary: GNU indent
+    Name: indent
+    Version: 2.2.6
+    Release: 2
+    Source0: %{name}-%{version}.tar.gz
+    License: GPL
+    Group: Development/Tools
+    BuildRoot: %{_builddir}/%{name}-root
+    %description    
+    %prep
+    %build	
+    %install
+    %clean
+    %files
+    %doc
 
-BuildRoot指定%install的目标路径,下文可通过${RPM_BUILD_ROOT}得到这个设好的值
-BuildRoot下的文件就是是最后放入RPM包的文件
+* _builddir是/usr/src/redhat/BUILD
+* BuildRoot指定%install的目标路径,下文可通过${RPM_BUILD_ROOT}得到这个设好的值
+* BuildRoot下的文件就是是最后放入RPM包的文件
 
 ## rpmbuild主要工作
 %prep
