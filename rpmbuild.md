@@ -79,20 +79,17 @@ xsconfig.spec:
     BuildRoot:      %{_tmppath}/%{name}-%{version}
     %description
     XSConfig contains some config files and scripts to support the XS installation.
-
     %prep
     %setup -q
     echo "hello"
     %build
-
-
+      #do nothing
     %install
     rm -rf ${RPM_BUILD_ROOT}
     mkdir -p ${RPM_BUILD_ROOT}
     #tar xf ${RPM_SOURCE_DIR}/%{name}-%{version}.tar.bz2 -C %{_builddir}
     cp -vra %{_builddir}/%{name}-%{version}/* ${RPM_BUILD_ROOT}
     rm -rf ${RPM_BUILD_ROOT}/ChangeLog
-
 
     %clean
     rm -rf $RPM_BUILD_ROOT
